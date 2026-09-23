@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#102A43" />
+  <title>StreetFound Desktop Dashboard</title>
+  <style>
+    :root {
+      --sf-navy: #102A43;
+      --sf-dark-teal: #174F58;
+      --sf-teal: #1FB6AA;
+      --sf-green: #32D583;
+      --sf-text: #F5F8FA;
+      --sf-shadow: #071521;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--sf-navy);
+      color: var(--sf-text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: clamp(14px, 2vw, 28px);
+      background:
+        radial-gradient(circle at top right, rgba(31, 182, 170, 0.10), transparent 32%),
+        linear-gradient(145deg, #0C2237 0%, var(--sf-navy) 55%, #0D263A 100%);
+    }
+
+    .dashboard {
+      width: min(1500px, 100%);
+      min-height: calc(100vh - clamp(28px, 4vw, 56px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(300px, 0.9fr) minmax(520px, 1.7fr);
+      grid-template-rows: 1fr 1fr;
+      gap: clamp(14px, 1.5vw, 22px);
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(31, 182, 170, 0.22);
+      border-radius: 22px;
+      background: rgba(7, 21, 33, 0.34);
+      box-shadow: 0 18px 45px rgba(7, 21, 33, 0.28);
+      min-height: 0;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+      z-index: 2;
+    }
+
+    .clock { grid-column: 1; grid-row: 1; }
+    .quotes { grid-column: 1; grid-row: 2; }
+    .weather { grid-column: 2; grid-row: 1 / 3; }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      border: 0;
+      background: transparent;
+    }
+
+    .clock iframe, .quotes iframe { min-height: 280px; }
+    .weather iframe { min-height: 600px; }
+
+    @media (max-width: 900px) {
+      body { padding: 12px; }
+      .dashboard {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .clock, .quotes, .weather {
+        grid-column: 1;
+        grid-row: auto;
+      }
+      .clock iframe { min-height: 250px; }
+      .quotes iframe { min-height: 260px; }
+      .weather iframe { min-height: 620px; }
+    }
+
+    @media (max-width: 520px) {
+      .card { border-radius: 16px; }
+      .weather iframe { min-height: 680px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="dashboard" aria-label="StreetFound desktop dashboard">
+    <section class="card clock" aria-label="Clock">
+      <iframe src="https://indify.co/widgets/live/clock/2WLgoFKUeJGpgJHXo9zl" title="Clock" loading="eager" allowfullscreen></iframe>
+    </section>
+
+    <section class="card quotes" aria-label="Quotes">
+      <iframe src="https://indify.co/widgets/live/quotes/yN9BsNDYIP5kwhhDba4M" title="Quotes" loading="eager" allowfullscreen></iframe>
+    </section>
+
+    <section class="card weather" aria-label="Weather">
+      <iframe src="https://indify.co/widgets/live/weather/aTVSLVQjoYMx26MjKBt6" title="Weather" loading="eager" allowfullscreen></iframe>
+    </section>
+  </main>
+</body>
+</html>
