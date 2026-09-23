@@ -6,32 +6,119 @@
 <title>StreetFound Widget 1601x145</title>
 <style>
 :root{--navy:#102A43;--teal:#174F58;--brand-teal:#1FB6AA;--green:#32D583;--text:#F5F8FA;--muted:#9FB3C2;--shadow:#071521;--orange:#FF9F43;--blue:#5CC8FF;}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#081A2A;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--text);overflow:hidden}body{display:flex;align-items:center;justify-content:center}.widget{width:1601px;height:145px;padding:10px;background:radial-gradient(circle at 92% 0%,rgba(31,182,170,.15),transparent 24%),linear-gradient(145deg,#0B2236,#102A43 60%,#0B2638);display:grid;grid-template-columns:280px 790px 1fr;gap:10px;overflow:hidden}.panel{height:125px;border:1px solid rgba(31,182,170,.24);background:rgba(7,21,33,.38);border-radius:16px;box-shadow:0 9px 24px rgba(7,21,33,.22);overflow:hidden}.clock{padding:13px 18px;display:flex;align-items:center;justify-content:space-between}.clock-main{display:flex;flex-direction:column;justify-content:center}.label{font-size:9px;letter-spacing:1.7px;text-transform:uppercase;color:var(--brand-teal);font-weight:800}.time{font-size:39px;line-height:1;font-weight:800;letter-spacing:-1.7px;margin:3px 0}.date{font-size:11px;color:var(--muted);font-weight:700}.clock-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(50,213,131,.65)}.weather{display:grid;grid-template-columns:155px repeat(5,1fr);align-items:stretch}.current{padding:10px 12px;background:linear-gradient(135deg,rgba(23,79,88,.72),rgba(16,42,67,.55));display:grid;grid-template-columns:1fr auto;align-items:center}.place{font-size:8px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:800}.current-temp{font-size:31px;font-weight:800;letter-spacing:-1.2px}.condition{font-size:10px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.current-icon{font-size:34px;margin-left:4px}.day{padding:8px 5px;display:flex;flex-direction:column;justify-content:center;align-items:center;border-left:1px solid rgba(255,255,255,.05);background:rgba(16,42,67,.56)}.day:nth-child(odd){background:rgba(23,79,88,.52)}.day-name{font-size:9px;letter-spacing:.7px;text-transform:uppercase;font-weight:800}.day-icon{font-size:24px;line-height:1;margin:4px 0}.temps{font-size:11px;font-weight:800;display:flex;gap:5px}.high{color:var(--orange)}.low{color:var(--blue)}.rain{font-size:8px;color:#46A6FF;font-weight:700;margin-top:3px}.quote{padding:12px 17px;display:flex;align-items:center;gap:11px;background:linear-gradient(110deg,rgba(23,79,88,.5),rgba(7,21,33,.38))}.mark{font-size:48px;line-height:1;color:var(--green);font-family:Georgia,serif;transform:translateY(-3px)}.quote-copy{min-width:0}.quote-label{font-size:8px;letter-spacing:1.7px;text-transform:uppercase;color:var(--brand-teal);font-weight:800;margin-bottom:4px}.quote-text{font-size:14px;line-height:1.25;font-weight:700;transition:opacity .35s ease}.error{font-size:10px;color:var(--muted)}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#081A2A;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--text);overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+.widget{width:1601px;height:145px;padding:10px;background:radial-gradient(circle at 92% 0%,rgba(31,182,170,.15),transparent 24%),linear-gradient(145deg,#0B2236,#102A43 60%,#0B2638);display:grid;grid-template-columns:280px 1fr 335px;gap:10px;overflow:hidden}
+.panel{height:125px;border:1px solid rgba(31,182,170,.24);background:rgba(7,21,33,.38);border-radius:16px;box-shadow:0 9px 24px rgba(7,21,33,.22);overflow:hidden}
+.clock{padding:13px 18px;display:flex;align-items:center;justify-content:space-between}
+.clock-main{display:flex;flex-direction:column;justify-content:center}
+.label{font-size:9px;letter-spacing:1.7px;text-transform:uppercase;color:var(--brand-teal);font-weight:800}
+.time{font-size:39px;line-height:1;font-weight:800;letter-spacing:-1.7px;margin:3px 0}
+.date{font-size:11px;color:var(--muted);font-weight:700}
+.clock-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(50,213,131,.65)}
+.quote{padding:12px 24px;display:flex;align-items:center;gap:15px;background:linear-gradient(110deg,rgba(23,79,88,.55),rgba(7,21,33,.38))}
+.mark{font-size:58px;line-height:1;color:var(--green);font-family:Georgia,serif;transform:translateY(-5px);flex:0 0 auto}
+.quote-copy{min-width:0}
+.quote-label{font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:var(--brand-teal);font-weight:800;margin-bottom:4px}
+.quote-text{font-size:25px;line-height:1.12;font-weight:800;letter-spacing:-.45px;transition:opacity .35s ease}
+.weather{padding:12px 16px;background:linear-gradient(135deg,rgba(23,79,88,.72),rgba(16,42,67,.55));display:grid;grid-template-columns:1fr auto;align-items:center}
+.place{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:800}
+.weather-row{display:flex;align-items:baseline;gap:9px;margin:3px 0}
+.current-temp{font-size:35px;font-weight:800;letter-spacing:-1.4px}
+.condition{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.details{font-size:9px;color:var(--muted);font-weight:700;margin-top:4px}
+.hi{color:var(--orange)} .lo{color:var(--blue)} .rain{color:#46A6FF}
+.current-icon{font-size:42px;margin-left:8px}
 </style>
 </head>
 <body>
 <main class="widget">
   <section class="panel clock">
-    <div class="clock-main"><div class="label">StreetFound • Local Time</div><div class="time" id="time">--:--</div><div class="date" id="date">Loading…</div></div><div class="clock-dot"></div>
-  </section>
-
-  <section class="panel weather">
-    <div class="current"><div><div class="place">Kernersville, NC</div><div class="current-temp" id="currentTemp">--°</div><div class="condition" id="currentCondition">Loading…</div></div><div class="current-icon" id="currentIcon">☀️</div></div>
-    <div id="day0" class="day"></div><div id="day1" class="day"></div><div id="day2" class="day"></div><div id="day3" class="day"></div><div id="day4" class="day"></div>
+    <div class="clock-main">
+      <div class="label">StreetFound • Local Time</div>
+      <div class="time" id="time">--:--</div>
+      <div class="date" id="date">Loading…</div>
+    </div>
+    <div class="clock-dot"></div>
   </section>
 
   <section class="panel quote">
-    <div class="mark">“</div><div class="quote-copy"><div class="quote-label">Daily Drive</div><div class="quote-text" id="quoteText">Build the kind of momentum that makes tomorrow easier.</div></div>
+    <div class="mark">“</div>
+    <div class="quote-copy">
+      <div class="quote-label">Daily Drive</div>
+      <div class="quote-text" id="quoteText">Build momentum today so tomorrow starts ahead.</div>
+    </div>
+  </section>
+
+  <section class="panel weather">
+    <div>
+      <div class="place">Kernersville, NC • Today</div>
+      <div class="weather-row">
+        <div class="current-temp" id="currentTemp">--°</div>
+        <div class="condition" id="currentCondition">Loading…</div>
+      </div>
+      <div class="details" id="details">Loading today's weather…</div>
+    </div>
+    <div class="current-icon" id="currentIcon">☀️</div>
   </section>
 </main>
+
 <script>
 const TZ='America/New_York';
-function updateClock(){const now=new Date();document.getElementById('time').textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(now);document.getElementById('date').textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'short',month:'short',day:'numeric'}).format(now)}updateClock();setInterval(updateClock,1000);
-const quotes=['Build the kind of momentum that makes tomorrow easier.','Consistency turns ordinary effort into uncommon results.','You do not need a perfect day. You need a useful next step.','Focus on what moves the work forward, then do it again.','Small improvements become big advantages when you keep them.','Clarity creates speed. Decide what matters and move.','Do the important work before the urgent noise takes over.','Progress compounds when good habits become the default.'];
-let qi=Math.floor(Date.now()/30000)%quotes.length;const q=document.getElementById('quoteText');setInterval(()=>{q.style.opacity='0';setTimeout(()=>{qi=(qi+1)%quotes.length;q.textContent=quotes[qi];q.style.opacity='1'},350)},30000);
-function weatherInfo(code){if(code===0)return['Clear','☀️'];if(code<=2)return['Partly cloudy','🌤️'];if(code===3)return['Overcast','☁️'];if(code===45||code===48)return['Fog','🌫️'];if(code>=51&&code<=57)return['Drizzle','🌦️'];if(code>=61&&code<=67)return['Rain','🌧️'];if(code>=71&&code<=77)return['Snow','❄️'];if(code>=80&&code<=82)return['Showers','🌦️'];if(code>=85&&code<=86)return['Snow showers','🌨️'];if(code>=95)return['Thunderstorms','⛈️'];return['Mixed','🌥️']}
-async function loadWeather(){try{const url='https://api.open-meteo.com/v1/forecast?latitude=36.11986&longitude=-80.07365&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=America%2FNew_York&forecast_days=5';const r=await fetch(url);if(!r.ok)throw new Error();const d=await r.json();const wi=weatherInfo(d.current.weather_code);document.getElementById('currentTemp').textContent=Math.round(d.current.temperature_2m)+'°';document.getElementById('currentCondition').textContent=wi[0];document.getElementById('currentIcon').textContent=wi[1];d.daily.time.forEach((t,i)=>{const dt=new Date(t+'T12:00:00');const day=i===0?'Today':new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:TZ}).format(dt);const w=weatherInfo(d.daily.weather_code[i]);const rain=d.daily.precipitation_probability_max[i]??0;document.getElementById('day'+i).innerHTML=`<div class="day-name">${day}</div><div class="day-icon">${w[1]}</div><div class="temps"><span class="high">${Math.round(d.daily.temperature_2m_max[i])}°</span><span class="low">${Math.round(d.daily.temperature_2m_min[i])}°</span></div><div class="rain">${rain>0?'💧 '+rain+'%':'Dry'}</div>`})}catch(e){document.getElementById('currentCondition').textContent='Weather unavailable';for(let i=0;i<5;i++)document.getElementById('day'+i).innerHTML='<div class="error">Retrying…</div>'}}
-loadWeather();setInterval(loadWeather,15*60*1000);
+function updateClock(){
+  const now=new Date();
+  document.getElementById('time').textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(now);
+  document.getElementById('date').textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'short',month:'short',day:'numeric'}).format(now);
+}
+updateClock(); setInterval(updateClock,1000);
+
+const quotes=["Build momentum today so tomorrow starts ahead.", "Consistency turns ordinary effort into uncommon results.", "You do not need a perfect day, only a useful next step.", "Focus on what moves the work forward, then do it again.", "Small improvements become big advantages when you keep them.", "Clarity creates speed. Decide what matters and move.", "Do the important work before the urgent noise takes over.", "Progress compounds when good habits become the default.", "One focused hour can change the direction of an entire day.", "Discipline is keeping the promise you made to your goal.", "Start before you feel ready and improve while moving.", "Make progress visible and motivation has something to follow.", "Your future is built from decisions that feel small today.", "Energy follows direction. Give yours somewhere worth going.", "Better systems make hard work easier to repeat.", "Action creates clarity faster than overthinking ever will.", "Protect your attention like it is one of your best assets.", "Finish the next important thing before chasing the next idea.", "Confidence grows when you keep proving yourself reliable.", "Momentum loves simple plans and consistent execution.", "Make the next move obvious, then make it happen.", "Results improve when excuses stop getting a vote.", "Good work becomes great when it is repeated with intention.", "Keep showing up long enough for the compound effect to appear.", "Do less, better, before trying to do more.", "The strongest routine is the one you can actually maintain.", "Improvement begins where vague intentions become specific actions.", "Your calendar reveals what your priorities really are.", "A calm plan beats frantic effort more often than people think.", "Make today easier by deciding what can wait.", "Use pressure to sharpen your focus, not scatter it.", "Progress is easier to trust when you can measure it.", "Keep your standards high and your next step simple.", "Do the work that makes future work lighter.", "Consistency is a competitive advantage anyone can build.", "Give your best energy to the work with the biggest payoff.", "Stop negotiating with the task you already decided matters.", "Success gets easier when the right actions become automatic.", "Choose progress over the temporary comfort of delay.", "Every finished task makes the next one easier to see.", "Strong days are built from clear priorities, not packed schedules.", "Make fewer promises and keep more of them.", "Your habits are quietly voting for the person you become.", "Focus is saying no to things that are not the priority.", "Create a pace you can sustain, then let time do its work.", "Preparation reduces stress and multiplies confidence.", "The next breakthrough may look like another ordinary day of work.", "Make the process strong enough that motivation becomes optional.", "Work with intention, rest without guilt, then return ready.", "One deliberate decision can remove hours of future friction.", "Choose the task that matters most, not the one that shouts loudest.", "Persistence becomes powerful when paired with a better method.", "Build routines that still work on your busiest days.", "A little more discipline now creates a lot more freedom later.", "Make the hard thing smaller by starting with five focused minutes.", "Progress does not need drama. It needs repetition.", "Do not confuse movement with meaningful progress.", "Quality improves when attention stops being divided.", "Turn goals into appointments and intentions into actions.", "Make your environment support the behavior you want.", "You gain time when you stop restarting the same unfinished work.", "Keep refining the system until good choices become easy choices.", "Your best work needs room, not just ambition.", "Slow down enough to choose the right problem.", "Finish strong, even when no one is watching.", "Do the next right thing before worrying about the tenth.", "Build proof through action, not confidence through wishing.", "Reduce friction and the right habits become easier to keep.", "Spend your attention where it can create something valuable.", "Progress accelerates when priorities stop competing with each other.", "Turn setbacks into information, then adjust the plan.", "Make improvement a routine, not an occasional event.", "Protect the first hour of your day from unnecessary noise.", "The work gets lighter when decisions are made in advance.", "Reliable effort beats occasional intensity.", "Leave enough margin in the day to think clearly.", "Do not wait for motivation to approve the schedule.", "Strong execution begins with knowing what not to do.", "Every repeatable win starts as a deliberate choice.", "Build a day your goals can actually survive inside.", "Keep the goal visible and the next action close.", "Focus on finishing, not constantly starting.", "Simple systems create space for better thinking.", "Make decisions once when possible, then let the system carry them.", "Your pace matters less than whether you keep moving.", "Give important work your freshest attention.", "Progress is built in the moments when quitting would be easier.", "Treat your time like a budget and spend it deliberately.", "Better questions lead to better decisions and better work.", "Create standards for the days when motivation is low.", "Do not add more until the basics are working well.", "Make your next action small enough that delay feels unnecessary.", "Consistency creates trust, including trust in yourself.", "Turn repeated problems into systems instead of repeated stress.", "A clear finish line makes focused work much easier.", "Leave yesterday's mistakes as lessons, not luggage.", "Measure what matters, improve what you can, repeat what works.", "Make room for the work that changes the outcome.", "Be patient with results and impatient with avoidable delay.", "End the day knowing what tomorrow starts with."];
+let lastQuoteSlot=-1;
+const q=document.getElementById('quoteText');
+function updateQuote(){
+  const slot=Math.floor(Date.now()/1800000);
+  if(slot===lastQuoteSlot) return;
+  lastQuoteSlot=slot;
+  const next=quotes[slot%quotes.length];
+  if(q.textContent===next) return;
+  q.style.opacity='0';
+  setTimeout(()=>{q.textContent=next;q.style.opacity='1';},350);
+}
+updateQuote(); setInterval(updateQuote,30000);
+
+function weatherInfo(code){
+  if(code===0)return['Clear','☀️'];
+  if(code<=2)return['Partly cloudy','🌤️'];
+  if(code===3)return['Overcast','☁️'];
+  if(code===45||code===48)return['Fog','🌫️'];
+  if(code>=51&&code<=57)return['Drizzle','🌦️'];
+  if(code>=61&&code<=67)return['Rain','🌧️'];
+  if(code>=71&&code<=77)return['Snow','❄️'];
+  if(code>=80&&code<=82)return['Showers','🌦️'];
+  if(code>=85&&code<=86)return['Snow showers','🌨️'];
+  if(code>=95)return['Thunderstorms','⛈️'];
+  return['Mixed','🌥️'];
+}
+async function loadWeather(){
+  try{
+    const url='https://api.open-meteo.com/v1/forecast?latitude=36.11986&longitude=-80.07365&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=1';
+    const r=await fetch(url); if(!r.ok) throw new Error();
+    const d=await r.json();
+    const wi=weatherInfo(d.current.weather_code);
+    document.getElementById('currentTemp').textContent=Math.round(d.current.temperature_2m)+'°';
+    document.getElementById('currentCondition').textContent=wi[0];
+    document.getElementById('currentIcon').textContent=wi[1];
+    const hi=Math.round(d.daily.temperature_2m_max[0]);
+    const lo=Math.round(d.daily.temperature_2m_min[0]);
+    const rain=d.daily.precipitation_probability_max[0]??0;
+    document.getElementById('details').innerHTML='Feels '+Math.round(d.current.apparent_temperature)+'° • <span class="hi">H '+hi+'°</span> / <span class="lo">L '+lo+'°</span> • <span class="rain">Rain '+rain+'%</span> • Wind '+Math.round(d.current.wind_speed_10m)+' mph';
+  }catch(e){
+    document.getElementById('currentCondition').textContent='Weather unavailable';
+    document.getElementById('details').textContent='Retrying automatically';
+  }
+}
+loadWeather(); setInterval(loadWeather,15*60*1000);
 </script>
 </body>
 </html>
