@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreetFound Widget 832x688</title>
+<style>
+:root{--navy:#102A43;--teal:#174F58;--brand-teal:#1FB6AA;--green:#32D583;--text:#F5F8FA;--muted:#9FB3C2;--shadow:#071521;--orange:#FF9F43;--blue:#5CC8FF;--gold:#FFD166;--cloud:#D9E4EC;}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#081A2A;font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--text);overflow:hidden}body{display:flex;align-items:center;justify-content:center}.widget{width:832px;height:688px;padding:22px;background:radial-gradient(circle at 88% 8%,rgba(31,182,170,.18),transparent 27%),linear-gradient(145deg,#0B2236,#102A43 55%,#0B2638);display:grid;grid-template-rows:220px 250px 148px;gap:12px;overflow:hidden}.card{background:rgba(7,21,33,.38);border:1px solid rgba(31,182,170,.26);border-radius:20px;box-shadow:0 16px 35px rgba(7,21,33,.28);overflow:hidden}.top{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px}.clock{padding:25px 28px;display:flex;flex-direction:column;justify-content:center}.eyebrow{font-size:12px;letter-spacing:2.1px;text-transform:uppercase;color:var(--brand-teal);font-weight:800}.time{font-size:66px;line-height:.98;font-weight:800;letter-spacing:-3px;margin:7px 0 10px}.date{font-size:17px;color:var(--muted);font-weight:600}.current{padding:20px 22px;display:grid;grid-template-columns:1fr auto;align-items:center;background:linear-gradient(135deg,rgba(23,79,88,.72),rgba(16,42,67,.55))}.place{font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.7px;text-transform:uppercase}.current-temp{font-size:57px;font-weight:800;letter-spacing:-3px;margin:3px 0}.condition{font-size:17px;font-weight:700}.feels{font-size:13px;color:var(--muted);margin-top:7px}.current-icon{font-size:76px;filter:drop-shadow(0 9px 12px rgba(0,0,0,.18));margin-left:12px}.forecast{padding:17px 18px 18px}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.section-title h2{font-size:15px;margin:0;letter-spacing:1.1px;text-transform:uppercase}.section-title span{font-size:11px;color:var(--muted)}.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;height:188px}.day{background:rgba(16,42,67,.72);border-radius:15px;padding:12px 7px 9px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.05)}.day:nth-child(even){background:rgba(23,79,88,.62)}.day-name{font-size:12px;font-weight:800;letter-spacing:.7px;text-transform:uppercase}.day-icon{font-size:39px;line-height:1}.temps{display:flex;gap:8px;font-weight:800;font-size:16px}.high{color:var(--orange)}.low{color:var(--blue)}.rain{font-size:11px;color:#46A6FF;font-weight:700;min-height:13px}.quote{padding:18px 25px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;background:linear-gradient(110deg,rgba(23,79,88,.52),rgba(7,21,33,.38))}.quote-mark{font-size:68px;line-height:1;color:var(--green);font-family:Georgia,serif;transform:translateY(-4px)}.quote-text{font-size:20px;line-height:1.34;font-weight:700;letter-spacing:-.2px;transition:opacity .35s ease}.quote-label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1.9px;color:var(--brand-teal);margin-bottom:5px;font-weight:800}.error{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main class="widget">
+  <section class="top">
+    <div class="card clock">
+      <div class="eyebrow">StreetFound • Local Time</div>
+      <div class="time" id="time">--:--</div>
+      <div class="date" id="date">Loading…</div>
+    </div>
+    <div class="card current">
+      <div>
+        <div class="place">Kernersville, NC</div>
+        <div class="current-temp" id="currentTemp">--°</div>
+        <div class="condition" id="currentCondition">Loading weather…</div>
+        <div class="feels" id="feels"></div>
+      </div>
+      <div class="current-icon" id="currentIcon">☀️</div>
+    </div>
+  </section>
+
+  <section class="card forecast">
+    <div class="section-title"><h2>5-Day Forecast</h2><span>Weather via Open-Meteo</span></div>
+    <div class="days" id="days"><div class="error">Loading forecast…</div></div>
+  </section>
+
+  <section class="card quote">
+    <div class="quote-mark">“</div>
+    <div><span class="quote-label">Daily Drive</span><div class="quote-text" id="quoteText">Build the kind of momentum that makes tomorrow easier.</div></div>
+  </section>
+</main>
+<script>
+const TZ='America/New_York';
+function updateClock(){const now=new Date();document.getElementById('time').textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}).format(now);document.getElementById('date').textContent=new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',month:'long',day:'numeric'}).format(now)}updateClock();setInterval(updateClock,1000);
+
+const quotes=[
+'Build the kind of momentum that makes tomorrow easier.',
+'Consistency turns ordinary effort into uncommon results.',
+'You do not need a perfect day. You need a useful next step.',
+'Focus on what moves the work forward, then do it again.',
+'Small improvements become big advantages when you keep them.',
+'Make progress visible and motivation has something to follow.',
+'Your future gets built in the decisions that feel small today.',
+'Discipline is simply keeping the promise you made to your goal.',
+'Clarity creates speed. Decide what matters and move.',
+'Do the important work before the urgent noise takes over.',
+'Progress compounds when good habits become the default.',
+'One focused hour can change the direction of an entire day.'
+];
+let qi=Math.floor(Date.now()/30000)%quotes.length;const q=document.getElementById('quoteText');
+function rotateQuote(){q.style.opacity='0';setTimeout(()=>{qi=(qi+1)%quotes.length;q.textContent=quotes[qi];q.style.opacity='1'},350)}setInterval(rotateQuote,30000);
+
+function weatherInfo(code){if(code===0)return['Clear sky','☀️'];if(code<=2)return['Partly cloudy','🌤️'];if(code===3)return['Overcast','☁️'];if(code===45||code===48)return['Fog','🌫️'];if(code>=51&&code<=57)return['Drizzle','🌦️'];if(code>=61&&code<=67)return['Rain','🌧️'];if(code>=71&&code<=77)return['Snow','❄️'];if(code>=80&&code<=82)return['Rain showers','🌦️'];if(code>=85&&code<=86)return['Snow showers','🌨️'];if(code>=95)return['Thunderstorms','⛈️'];return['Mixed conditions','🌥️']}
+async function loadWeather(){try{const url='https://api.open-meteo.com/v1/forecast?latitude=36.11986&longitude=-80.07365&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=5';const r=await fetch(url);if(!r.ok)throw new Error('Weather unavailable');const d=await r.json();const info=weatherInfo(d.current.weather_code);document.getElementById('currentTemp').textContent=Math.round(d.current.temperature_2m)+'°';document.getElementById('currentCondition').textContent=info[0];document.getElementById('currentIcon').textContent=info[1];document.getElementById('feels').textContent='Feels like '+Math.round(d.current.apparent_temperature)+'°  •  Wind '+Math.round(d.current.wind_speed_10m)+' mph';const wrap=document.getElementById('days');wrap.innerHTML='';d.daily.time.forEach((t,i)=>{const dt=new Date(t+'T12:00:00');const day=i===0?'Today':new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:TZ}).format(dt);const wi=weatherInfo(d.daily.weather_code[i]);const rain=d.daily.precipitation_probability_max[i]??0;wrap.insertAdjacentHTML('beforeend',`<div class="day"><div class="day-name">${day}</div><div class="day-icon">${wi[1]}</div><div class="temps"><span class="high">${Math.round(d.daily.temperature_2m_max[i])}°</span><span class="low">${Math.round(d.daily.temperature_2m_min[i])}°</span></div><div class="rain">${rain>0?'💧 '+rain+'%':'Dry'}</div></div>`)});}catch(e){document.getElementById('currentCondition').textContent='Weather temporarily unavailable';document.getElementById('days').innerHTML='<div class="error">Could not load forecast. It will retry automatically.</div>'}}
+loadWeather();setInterval(loadWeather,15*60*1000);
+</script>
+</body>
+</html>
